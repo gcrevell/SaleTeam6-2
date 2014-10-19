@@ -234,3 +234,82 @@ Set.prototype.product = function(set) {
 function logicalAnd(operand1, operand2) {
     return operand1 && operand2;
 };
+
+/**
+ * @contributors: Garret Patterson
+ * @param operand1
+ * @param operand2
+ * @returns {boolean}
+ */
+function logicalAnd(operand1, operand2){
+    return operand1 && operand2;
+}
+
+/**
+ * @contributors: Garret Patterson
+ * @param operand1
+ * @param operand2
+ * @returns {boolean}
+ */
+function logicalOr(operand1, operand2){
+    return (operand1 || operand2);
+}
+
+/**
+ * @contributors: Garret Patterson
+ * @param operand1
+ * @returns {boolean}
+ */
+function logicalNot(operand1){
+    return !(operand1);
+}
+
+/**
+ * @contributors: Garret Patterson
+ * @param operand1
+ * @param operand2
+ * @returns {boolean}
+ */
+function logicalNand(operand1, operand2){
+    return !(operand1 && operand2);
+}
+
+/**
+ * @contributors: Garret Patterson
+ * @param operand1
+ * @param operand2
+ * @returns {boolean}
+ */
+function logicalXor(operand1, operand2){
+    return(!(operand1 && operand2) && (operand1 || operand2));
+}
+
+/**
+ * @contributors Garret Patterson
+ * @param operand1
+ * @param operand2
+ * @returns {*|boolean}
+ */
+function logicalIf(operand1, operand2){
+    return ((operand1 && operand2) || !(operand1 && operand2));
+}
+
+/**
+ * @contributors Garret Patterson
+ * @param operand1
+ * @param operand2
+ * @returns {boolean}
+ */
+function logicalIif(operand1, operand2){
+    return (!(!(operand1 && operand2) && (operand1 || operand2)) || (operand1 && operand2));
+}
+
+/**
+ * @contributors Garret Patterson
+ * @param operand1
+ * @param operand2
+ * @returns {boolean}
+ */
+function logicalNor(operand1, operand2){
+    return (!(operand1 || operand2));
+}
