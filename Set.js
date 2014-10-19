@@ -59,3 +59,12 @@ Set.prototype.clone = function() {
         returnSet.addElement(entry);
     });
 };
+
+/* Contributors: Joseph Pietrzyk
+ * parameter operand1: a boolean value
+ * parameter operand2: a boolean value
+ * returns: the and of the two booleans
+ */
+function logicalAnd(operand1, operand2) {
+    return operand1 && operand2;
+};
