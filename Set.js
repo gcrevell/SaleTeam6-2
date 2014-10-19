@@ -53,13 +53,19 @@ function Set() {
 }
 
 /**
- * Contributors: Gabe Revells
+ * Contributors: Gabe Revells, Joseph Pietrzyk
  *
  * Function to add an element to the set.
  *
  * @param newElement - The element to be added to the set
  */
 Set.prototype.addElement = function(newElement) {
+    /* checks to see if element is already in set, added by Joseph Pietrzyk */
+    for (var i = 0; i<this.set.length;i++) {
+        if (this.set[i].value == newElement.value) {
+            return;
+        }
+    }
     this.set[this.set.length] = newElement;
 };
 
@@ -131,6 +137,26 @@ Set.prototype.clone = function() {
         returnSet.addElement(entry);
     });
 
+    return returnSet;
+};
+
+/**
+ * Contributors: Joseph Pietrzyk, Nat Shapiro
+ * 
+ * Returns a set which is the union of this set and the parameter
+ * 
+ * @param set - another set
+ * 
+ * @returns the union of the two sets
+ */
+Set.prototype.union = function(set) {
+    var returnSet = new Set();
+    for (var i=0;i<this.set.length;i++) {
+        returnSet.addElement(this.set[i]);
+    }
+    for (var i=0;i<set.getElements().length;i++) {
+        returnSet.addElement(set.getElements()[i]);
+    }
     return returnSet;
 };
 
