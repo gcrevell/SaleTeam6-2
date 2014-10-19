@@ -62,7 +62,7 @@ function Set() {
 Set.prototype.addElement = function(newElement) {
     /* checks to see if element is already in set, added by Joseph Pietrzyk */
     for (var i = 0; i<this.set.length;i++) {
-        if (this.set[i].value == newElement.value) {
+        if (this.set[i].getElement() == newElement.getElement()) {
             return;
         }
     }
@@ -141,7 +141,7 @@ Set.prototype.clone = function() {
 };
 
 /**
- * Contributors: Joseph Pietrzyk, Nat Shapiro
+ * Contributors: Joseph Pietrzyk
  * 
  * Returns a set which is the union of this set and the parameter
  * 
@@ -160,9 +160,75 @@ Set.prototype.union = function(set) {
     return returnSet;
 };
 
+/**
+ * Contributors: Joseph Pietrzyk
+ *
+ * Method to get the intersection of two sets
+ *
+ * @param set - another set
+ *
+ * @returns the intersection of the two sets
+ */
+Set.prototype.intersection = function(set) {
+    var set1 = this.set;
+    var set2 = set.getElements();
+    var returnSet = new Set();
+    for (var i=0;i<set1.length;i++) {
+        for (var j=0;j<set2.length;j++) {
+            if (set1[i].getElement() == set2[j].getElement()) {
+                returnSet.addElement(set1[i]);
+            }
+        }
+    }
+    return returnSet;
+};
+
+/**
+ * Contributors: Joseph Pietrzyk
+ *
+ * Method to get the difference of two sets
+ *
+ * @param set - another set
+ *
+ * @returns the difference of the two sets
+ */
+Set.prototype.difference = function(set) {
+    var returnSet = this.clone();
+    for (var i=0;i<set.getElements().length;i++) {
+        returnSet.removeElement(set.getElements()[i]);
+    }
+    return returnSet;
+};
+
+/**
+ * Contributors: Joseph Pietrzyk
+ *
+ * Method to get the product of two sets
+ *
+ * @param set - another set
+ *
+ * @returns the product of the two sets
+ */
+Set.prototype.product = function(set) {
+    var returnSet = new Set();
+    for (var i=0;i<this.set.length;i++) {
+        var element1 = this.set[i].getElement();
+        for (var j=0;j<set.getElements().length;j++) {
+            var element2 = set.getElements()[j].getElement();
+            var newElement = new Element([element1, element2]);
+            returnSet.addElement(newElement);
+        }
+
+    }
+    return returnSet;
+}
+
 /* Contributors: Joseph Pietrzyk
+
  * parameter operand1: a boolean value
+ *
  * parameter operand2: a boolean value
+ *
  * returns: the and of the two booleans
  */
 function logicalAnd(operand1, operand2) {
